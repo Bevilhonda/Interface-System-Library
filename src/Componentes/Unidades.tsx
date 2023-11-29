@@ -8,9 +8,9 @@ function Unidades() {
   const [unidade, setUnidade] = useState("");
   const navigate = useNavigate();
   const handleNovaUnidade = () => {
-    // Adicione aqui a lógica para processar a nova unidade, se necessário
+    //  aqui vai lógica para processar a nova unidade, se precisar
 
-    // Navegue para outra página
+    // Navegue aqui para outra página
     navigate("/outraPagina");
   };
   

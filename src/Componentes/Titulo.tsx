@@ -3,10 +3,12 @@ import React from "react";
 import Unidades from "./Unidades";
 
 function Titulo() {
+  
   let nome = "Bibliotecas Maringá"
 
   return (
-    <header>
+    <div>
+     
       <div>
         <h1 style={{
           color: "black",
@@ -17,9 +19,11 @@ function Titulo() {
         }}>{nome}</h1>
 
       </div>
+
       <Unidades />
 
-    </header>
+    </div>
+    
   )
 }
 

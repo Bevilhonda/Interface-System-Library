@@ -44,7 +44,7 @@ function Page2() {
           />
 
       </Paper>
-
+      
     </div>
   )
 }
