@@ -1,33 +1,33 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import React, { useState } from "react";
 
-export default function BasicSelect() {
-  const [age, setAge] = React.useState('');
+export default function SelecionarUnidade() {
+  const [unidade, setUnidade] = useState("");
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+  const alteraEstadoUnidade = (event: SelectChangeEvent) => {
+    setUnidade(event.target.value as string);
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Idade</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="Age"
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>Dez</MenuItem>
-          <MenuItem value={20}>Vinte</MenuItem>
-          <MenuItem value={30}>Trinta</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    <Box sx={{ minWidth: 250, marginRight: 10 }}>
+    <FormControl fullWidth>
+      <InputLabel id="IdUnidades">Unidades</InputLabel>
+      <Select
+        labelId="IdUnidades"
+        id="IdUnidades"
+        value={unidade}
+        label="Unidades"
+        onChange={alteraEstadoUnidade}
+      >
+        <MenuItem value={"Centro"}>Centro</MenuItem>
+        <MenuItem value={"Zona sul"}>Zona Sul</MenuItem>
+        <MenuItem value={"Zona norte"}>Zona Norte</MenuItem>
+      </Select>
+    </FormControl>
+  </Box>
   );
 }

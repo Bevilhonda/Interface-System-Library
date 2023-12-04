@@ -24,7 +24,8 @@ function Page2() {
         padding: 10,
         boxSizing: 'border-box',
         height: '530px',
-        marginTop: '-20px'
+        marginTop: '-20px',
+        marginRight: '10px'
       }}>
         
           <MenuOptions
@@ -43,6 +44,20 @@ function Page2() {
           />
 
       </Paper>
+
+      <Paper style={{
+        width: 900,
+        backgroundColor: "black",
+        padding: 10,
+        boxSizing: 'border-box',
+        height: '530px',
+        marginTop: '-530px',
+        marginLeft: '300px'
+        
+      }}>
+
+      </Paper>
+      
       
     </div>
   )
