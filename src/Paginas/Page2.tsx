@@ -1,20 +1,29 @@
 import React from "react";
 import Paper from '@mui/material/Paper';
 import MenuOptions from "../Menu/MenuOpçoes";
+import HomeIcon from '@mui/icons-material/Home';
+import { Link } from 'react-router-dom';
 
 function Page2() {
   let nome = "Bibliotecas Maringá"
 
   return (
     <div>
+
       <div>
-      <h1 style={{
+        <Link to="/">
+          <HomeIcon style={{ fontSize: 40, color: 'black' }} />
+
+        </Link>
+
+
+        <h1 style={{
           color: "black",
           textAlign: "center",
-          padding: "0px",
           fontSize: "60px",
           fontFamily: "sans-serif",
-        }}>{nome}</h1>
+          marginTop: '-25px'
+        }}> {nome} </h1>
 
       </div>
 
@@ -27,21 +36,21 @@ function Page2() {
         marginTop: '-20px',
         marginRight: '10px'
       }}>
-        
-          <MenuOptions
-            titulo="Biblioteca"
-            campos={["Consultar", "Cadastrar", "Atualizar"]}
-          />
 
-          <MenuOptions
-            titulo="Autores"
-            campos={["Consultar", "Cadastrar", "Atualizar"]}
-          />
+        <MenuOptions
+          titulo="Biblioteca"
+          campos={["Consultar", "Cadastrar", "Atualizar"]}
+        />
 
-          <MenuOptions
-            titulo="Livros"
-            campos={["Consultar", "Cadastrar", "Atualizar"]}
-          />
+        <MenuOptions
+          titulo="Autores"
+          campos={["Consultar", "Cadastrar", "Atualizar"]}
+        />
+
+        <MenuOptions
+          titulo="Livros"
+          campos={["Consultar", "Cadastrar", "Atualizar"]}
+        />
 
       </Paper>
 
@@ -53,12 +62,12 @@ function Page2() {
         height: '530px',
         marginTop: '-530px',
         marginLeft: '300px'
-        
+
       }}>
 
       </Paper>
-      
-      
+
+
     </div>
   )
 }

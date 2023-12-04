@@ -10,6 +10,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Titulo />} />
           <Route path="/outraPagina" element={<Page2 />} />
+          
         </Routes>
         
       </div>
