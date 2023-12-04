@@ -10,8 +10,6 @@ const BotaoModificado = styled(Button)({
   color: "greenyellow",
   display: "flex",
   flexDirection: "column",
-  
-  
 });
 
 const BotaodoMenu = ({ label }) => {

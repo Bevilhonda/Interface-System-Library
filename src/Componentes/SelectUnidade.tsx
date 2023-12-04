@@ -24,10 +24,10 @@ const names = [
   'Zona Sul',
 ];
 
-function getStyles(name: string, personName: string[], theme: Theme) {
+function getStyles(name: string, nomeUnidade: string[], theme: Theme) {
   return {
     fontWeight:
-      personName.indexOf(name) === -1
+      nomeUnidade.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
@@ -35,13 +35,13 @@ function getStyles(name: string, personName: string[], theme: Theme) {
 
 export default function MultipleSelect() {
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState<string[]>([]);
+  const [nomeUnidade, setNomeUnidade] = React.useState<string[]>([]);
 
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+  const handleChange = (event: SelectChangeEvent<typeof nomeUnidade>) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
+    setNomeUnidade(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
@@ -50,21 +50,21 @@ export default function MultipleSelect() {
   return (
     <div>
       <FormControl sx={{ m: 5, width: 300 }}>
-        <InputLabel id="demo-multiple-name-label">Escolha uma Unidade</InputLabel>
+        <InputLabel id="demo-multiple-name-label" sx={{ marginBottom: '8px' }} >Escolha uma Unidade</InputLabel>
         <Select
           labelId="demo-multiple-name-label"
           id="demo-multiple-name"
           multiple
-          value={personName}
+          value={nomeUnidade}
           onChange={handleChange}
-          input={<OutlinedInput label="Name" />}
+          input={<OutlinedInput label="Name" sx={{ marginTop: '8px', marginBottom: '8px' }} />}
           MenuProps={MenuProps}
         >
           {names.map((name) => (
             <MenuItem
               key={name}
               value={name}
-              style={getStyles(name, personName, theme)}
+              style={getStyles(name, nomeUnidade, theme)}
             >
               {name}
             </MenuItem>

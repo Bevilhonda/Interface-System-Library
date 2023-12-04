@@ -13,15 +13,14 @@ function Titulo() {
         <h1 style={{
           color: "black",
           textAlign: "center",
-          padding: "1px",
+          padding: "0px",
           fontSize: "60px",
           fontFamily: "sans-serif",
         }}>{nome}</h1>
 
       </div>
-
       <Unidades />
-
+    
     </div>
     
   )

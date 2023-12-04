@@ -8,13 +8,12 @@ function Page2() {
   return (
     <div>
       <div>
-        <h1 style={{
+      <h1 style={{
           color: "black",
           textAlign: "center",
-          padding: "1px",
+          padding: "0px",
           fontSize: "60px",
           fontFamily: "sans-serif",
-          marginTop: '-8px'
         }}>{nome}</h1>
 
       </div>
@@ -24,7 +23,7 @@ function Page2() {
         backgroundColor: 'black',
         padding: 10,
         boxSizing: 'border-box',
-        height: '550px',
+        height: '530px',
         marginTop: '-20px'
       }}>
         

@@ -1,7 +1,7 @@
 import React from "react";
 import BotaodoMenu from "../Botoes/Botaodeacao";
 
-function MenuOptions({ campos, titulo }) { // essa função tem dois parametros
+function MenuOptions({ campos , titulo }) { 
   return (
     <div>
       <h2 style={{ marginBottom: "15px", color: "yellowgreen", height: '8px' }}>
@@ -16,9 +16,9 @@ function MenuOptions({ campos, titulo }) { // essa função tem dois parametros
           gap: 5,
         }}
       >
-        {campos.map(function (opcaoCampo, index) { 
-          // o map percorre cada indice e retorna um novo array e um novo valor para cada indice
-          return <BotaodoMenu key={index} label={opcaoCampo} />;
+        {campos.map(function (valorAtual, index) { 
+         
+          return <BotaodoMenu key={index} label={valorAtual} />;
         })}
       </ol>
     </div>
