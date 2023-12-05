@@ -1,8 +1,9 @@
 import React from "react";
 import Paper from '@mui/material/Paper';
-import MenuOptions from "../Menu/MenuOpçoes";
+import MenuOptions from "../Menu/MenuOptions";
 import HomeIcon from '@mui/icons-material/Home';
 import { Link } from 'react-router-dom';
+import ExemploComponente from "../Componentes/ListaBibliotecas";
 
 function Page2() {
   let nome = "Bibliotecas Maringá"
@@ -11,7 +12,9 @@ function Page2() {
     <div>
 
       <div>
+        
         <Link to="/">
+
           <HomeIcon style={{ fontSize: 40, color: 'black' }} />
 
         </Link>
@@ -66,7 +69,7 @@ function Page2() {
       }}>
 
       </Paper>
-
+      
 
     </div>
   )

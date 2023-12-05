@@ -12,12 +12,12 @@ const BotaoModificado = styled(Button)({
   flexDirection: "column",
 });
 
-const BotaodoMenu = ({ label }) => {
-  return (
+type BotaodoMenuProps = {
+  label: string; 
+};
 
-  <BotaoModificado>{label}</BotaoModificado>
-  
-  )
+const BotaodoMenu = (props : BotaodoMenuProps) => {
+  return <BotaoModificado>{props.label}</BotaoModificado>;
 };
 
 export default BotaodoMenu;

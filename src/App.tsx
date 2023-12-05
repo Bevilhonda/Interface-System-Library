@@ -1,5 +1,5 @@
 import React from 'react';
-import Titulo from './Componentes/Titulo';
+import HomePage from './Componentes/PageInitial';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Page2 from "./Paginas/Page2";
 
@@ -8,7 +8,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Titulo />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/outraPagina" element={<Page2 />} />
           
         </Routes>

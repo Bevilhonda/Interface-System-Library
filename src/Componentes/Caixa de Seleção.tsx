@@ -14,20 +14,23 @@ export default function SelecionarUnidade() {
 
   return (
     <Box sx={{ minWidth: 250, marginRight: 10 }}>
-    <FormControl fullWidth>
-      <InputLabel id="IdUnidades">Unidades</InputLabel>
-      <Select
-        labelId="IdUnidades"
-        id="IdUnidades"
-        value={unidade}
-        label="Unidades"
-        onChange={alteraEstadoUnidade}
-      >
-        <MenuItem value={"Centro"}>Centro</MenuItem>
-        <MenuItem value={"Zona sul"}>Zona Sul</MenuItem>
-        <MenuItem value={"Zona norte"}>Zona Norte</MenuItem>
-      </Select>
-    </FormControl>
-  </Box>
+      <FormControl fullWidth>
+
+        <InputLabel id="IdUnidades">Unidades</InputLabel>
+
+        <Select
+          labelId="IdUnidades"
+          id="IdUnidades"
+          value={unidade}
+          label="Unidades"
+          onChange={alteraEstadoUnidade}
+        >
+          <MenuItem value={"Centro"}>Centro</MenuItem>
+          <MenuItem value={"Zona sul"}>Zona Sul</MenuItem>
+          <MenuItem value={"Zona norte"}>Zona Norte</MenuItem>
+          
+        </Select>
+      </FormControl>
+    </Box>
   );
 }

@@ -1,11 +1,18 @@
 import React from "react";
 import BotaodoMenu from "../Botoes/Botaodeacao";
 
-function MenuOptions({ campos , titulo }) { 
+type MenuOptionsProps = {
+  campos: string[]
+  titulo: string
+}
+
+
+function MenuOptions(props: MenuOptionsProps) {
+
   return (
     <div>
       <h2 style={{ marginBottom: "15px", color: "yellowgreen", height: '8px' }}>
-        {titulo} 
+        {props.titulo}
       </h2>
       <ol
         style={{
@@ -16,8 +23,8 @@ function MenuOptions({ campos , titulo }) {
           gap: 5,
         }}
       >
-        {campos.map(function (valorAtual, index) { 
-         
+        {props.campos.map(function (valorAtual, index) {
+
           return <BotaodoMenu key={index} label={valorAtual} />;
         })}
       </ol>
