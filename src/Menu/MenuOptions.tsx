@@ -15,6 +15,7 @@ function MenuOptions(props: MenuOptionsProps) {
       <h2 style={{ marginBottom: "15px", color: "yellowgreen", height: '8px' }}>
         {props.titulo}
       </h2>
+      
       <ol
         style={{
           padding: 10,
@@ -26,7 +27,9 @@ function MenuOptions(props: MenuOptionsProps) {
       >
         {props.campos.map(function (valorAtual, index) {
 
-          return <BotaodoMenu key={index} nomeBotao={valorAtual} onButtonClick={() => props.onButtonClick(valorAtual)}/>;
+          return <BotaodoMenu key={index} 
+          nomeBotao={valorAtual} 
+          onButtonClick={() => props.onButtonClick(valorAtual)}/>;
         })}
       </ol>
     </div>

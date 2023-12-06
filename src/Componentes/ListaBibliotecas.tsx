@@ -69,7 +69,7 @@ const GetAllLibrarys = function () {
           ))}
         </ul>
       ) : ( // SE LIBRARIES NÃO EXISTIR RENDERIZA ESSA MENSAGEM DE Carregando bibliotecas...
-        <p>Carregando bibliotecas...</p>
+        <p style={{ color: "greenyellow" }}>Carregando bibliotecas...</p>
       )}
     </div>
   );
