@@ -12,8 +12,8 @@ o useEffect é iniciado e faz o GetAllLibrarys esperar os acontecimentos
 dentro da função searchDataLibrarys() acontecer , se caso tudo der certo a variavel
 libraries terá um novo valor ;*/
 const GetAllLibrarys = function () {
-  const [libraries, setLibraries] = useState<LibraryEntity[] | null>(null);
-  // libraries vai ser nula ou um array do tipo LibraryEntity
+  const [libraries, setLibraries] = useState<LibraryEntity[] | null> (null);
+  // libraries inicia como null , e  vai ser um array do tipo LibraryEntity ou array vazio.
 
   useEffect(function () {
     // enquanto o componente GetAllLibrarys é montado o useEffect entra em ação 
