@@ -4,6 +4,7 @@ import BotaodoMenu from "../Botoes/Botaodeacao";
 type MenuOptionsProps = {
   campos: string[]
   titulo: string
+  onButtonClick: (page: string) => void;
 }
 
 
@@ -25,7 +26,7 @@ function MenuOptions(props: MenuOptionsProps) {
       >
         {props.campos.map(function (valorAtual, index) {
 
-          return <BotaodoMenu key={index} label={valorAtual} />;
+          return <BotaodoMenu key={index} nomeBotao={valorAtual} onButtonClick={() => props.onButtonClick(valorAtual)}/>;
         })}
       </ol>
     </div>

@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Paper from '@mui/material/Paper';
 import MenuOptions from "../Menu/MenuOptions";
 import HomeIcon from '@mui/icons-material/Home';
 import { Link } from 'react-router-dom';
-import ExemploComponente from "../Componentes/ListaBibliotecas";
+import GetAllLibrarys from "../Componentes/ListaBibliotecas";
 
 function Page2() {
+  const [currentPage, setCurrentPage] = useState<string>("");
+
   let nome = "Bibliotecas Maringá"
+
+  const handleButtonClick = (page: string) => {
+    setCurrentPage(page);
+  }
+
 
   return (
     <div>
@@ -43,16 +50,19 @@ function Page2() {
         <MenuOptions
           titulo="Biblioteca"
           campos={["Consultar", "Cadastrar", "Atualizar"]}
+          onButtonClick={(page) => handleButtonClick("Bibliotecas")}
         />
 
         <MenuOptions
           titulo="Autores"
           campos={["Consultar", "Cadastrar", "Atualizar"]}
+          onButtonClick={(page) => handleButtonClick("Autores")}
         />
 
         <MenuOptions
           titulo="Livros"
           campos={["Consultar", "Cadastrar", "Atualizar"]}
+          onButtonClick={(page) => handleButtonClick("Livros")}
         />
 
       </Paper>
@@ -70,6 +80,7 @@ function Page2() {
 
       </Paper>
       
+      {currentPage === "Bibliotecas" && <GetAllLibrarys />}
 
     </div>
   )

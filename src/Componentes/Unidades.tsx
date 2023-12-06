@@ -1,13 +1,13 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
-import SelecionarUnidade from "./Caixa de Seleção";
+import SelecionarUnidade from "./Caixa de Seleção de Unidades";
 
 
 function Unidades() {
 
   const navigate = useNavigate();
 
-  const alteraProximaPagina = () => {
+  const alteraProximaPagina = function() {
     //  aqui vai lógica para processar a nova unidade, se precisar
 
     // Navegue aqui para outra página

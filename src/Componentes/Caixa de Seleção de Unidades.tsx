@@ -25,6 +25,7 @@ export default function SelecionarUnidade() {
           label="Unidades"
           onChange={alteraEstadoUnidade}
         >
+          <MenuItem value={"Todas"}>Todas Unidades</MenuItem>
           <MenuItem value={"Centro"}>Centro</MenuItem>
           <MenuItem value={"Zona sul"}>Zona Sul</MenuItem>
           <MenuItem value={"Zona norte"}>Zona Norte</MenuItem>

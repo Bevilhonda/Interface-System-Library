@@ -5,7 +5,7 @@ import { styled } from '@mui/system';
 const BotaoModificado = styled(Button)({
   fontSize: '12px',
   padding: '5px 60px',
-  backgroundColor: "steelblue", 
+  backgroundColor: "steelblue",
   listStyleType: "initial",
   color: "greenyellow",
   display: "flex",
@@ -13,11 +13,14 @@ const BotaoModificado = styled(Button)({
 });
 
 type BotaodoMenuProps = {
-  label: string; 
+  nomeBotao: string;
+  onButtonClick?: () => void;
 };
 
-const BotaodoMenu = (props : BotaodoMenuProps) => {
-  return <BotaoModificado>{props.label}</BotaoModificado>;
+const BotaodoMenu = (props: BotaodoMenuProps) => {
+  return <BotaoModificado onClick={props.onButtonClick}>
+    {props.nomeBotao}
+  </BotaoModificado>;
 };
 
 export default BotaodoMenu;
