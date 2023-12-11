@@ -8,7 +8,7 @@ function HomePage() {
 
   return (
     <div>
-      <Titulo />
+      <Titulo  />
       <Unidades />
       
     

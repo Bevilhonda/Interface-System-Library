@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { useState } from "react";
+import GetAllLibrarys from './LibraryList';
 
 export default function SelecionarUnidade() {
   const [unidade, setUnidade] = useState("");
@@ -25,9 +26,12 @@ export default function SelecionarUnidade() {
           label="Unidades"
           onChange={alteraEstadoUnidade}
         >
-          <MenuItem value={"Todas"}>Todas Unidades</MenuItem>
+          <MenuItem value={"Todas"}>Todas Unidades </MenuItem>
+
           <MenuItem value={"Centro"}>Centro</MenuItem>
+
           <MenuItem value={"Zona sul"}>Zona Sul</MenuItem>
+
           <MenuItem value={"Zona norte"}>Zona Norte</MenuItem>
           
         </Select>

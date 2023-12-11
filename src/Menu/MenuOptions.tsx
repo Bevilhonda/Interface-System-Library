@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import ConsultButton from "../Botoes/BotãoConsultar";
 import RegisterButton from "../Botoes/BotãoCadastrar";
 import UpdateButton from "../Botoes/BotãoAtualizar";
-import GetAllLibrarys from "../Componentes/ListaBibliotecas";
+import GetAllLibrarys from "../Componentes/LibraryList";
+import GetAllAlthors from "../Componentes/AuthorsList";
 
 
 const MenuOptions: React.FC = () => {
@@ -41,7 +42,7 @@ const MenuOptions: React.FC = () => {
       }}>
         <h2 style={{ color: "greenyellow", textAlign: "center", marginTop: "-12px" }}>Autores</h2>
         <div style={{ marginTop: "-10px", display: "flex", flexDirection: "column", gap: "5px" }}>
-          <ConsultButton />
+          <ConsultButton onButtonClick={() => handleConsultClick(<GetAllAlthors/>)}/>
           <RegisterButton />
           <UpdateButton />
         </div>

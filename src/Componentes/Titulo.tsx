@@ -1,11 +1,9 @@
-function Titulo() {
 
-  let nome = "Bibliotecas Maringá"
+function Titulo() {
+  let nome = "Bibliotecas Maringá";
 
   return (
     <div>
-
-
       <div>
         <h1 style={{
           color: "black",
@@ -15,12 +13,9 @@ function Titulo() {
           fontFamily: "sans-serif",
           marginTop: '27px'
         }}>{nome}</h1>
-
       </div>
-
     </div>
-
-  )
+  );
 }
 
-export default Titulo
+export default Titulo;
