@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
 import React, { useState } from "react";
-import ConsultButton from "../Botoes/BotãoConsultar";
-import RegisterButton from "../Botoes/BotãoCadastrar";
-import UpdateButton from "../Botoes/BotãoAtualizar";
-import GetAllLibrarys from "../Componentes/LibraryList";
-import GetAllAlthors from "../Componentes/AuthorsList";
+import ConsultButton from "../Buttons/BotãoConsultar";
+import RegisterButton from "../Buttons/BotãoCadastrar";
+import UpdateButton from "../Buttons/BotãoAtualizar";
+import GetAllLibrarys from "../Components/LibraryList";
+import GetAllAlthors from "../Components/AuthorsList";
 
 
 const MenuOptions: React.FC = () => {

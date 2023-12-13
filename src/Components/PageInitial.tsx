@@ -1,7 +1,7 @@
 
 import React from "react";
-import Unidades from "./Unidades";
-import Titulo from "./Titulo";
+import Unidades from "./Units";
+import Titulo from "./Title";
 
 
 function HomePage() {
