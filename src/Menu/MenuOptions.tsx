@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ConsultButton from "../Buttons/BotãoConsultar";
 import RegisterButton from "../Buttons/BotãoCadastrar";
 import UpdateButton from "../Buttons/BotãoAtualizar";
-import GetAllLibrarys from "../Components/LibraryList";
+import GetAllLibrarys from "../Components/LibrariesList";
 import GetAllAlthors from "../Components/AuthorsList";
 
 

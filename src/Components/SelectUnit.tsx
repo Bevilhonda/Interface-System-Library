@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { useState } from "react";
-import GetAllLibrarys from './LibraryList';
+import GetAllLibrarys from './LibrariesList';
 
 export default function SelecionarUnidade() {
   const [unidade, setUnidade] = useState("");
