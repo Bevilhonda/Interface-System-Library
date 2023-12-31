@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import MenuOptions from '../Menu/MenuOptions';
 
 
-function Page2() {
+function Services() {
   
   let nome = "Bibliotecas Maringá"
 
@@ -51,4 +51,4 @@ function Page2() {
     </div>
   )
 }
-export default Page2
+export default Services

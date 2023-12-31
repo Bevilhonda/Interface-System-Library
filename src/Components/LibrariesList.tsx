@@ -3,14 +3,13 @@ import axios from 'axios';
 
 type DTOLibraries = {
   idLibrary: number;
-  name: string;
+  nome: string;
   fk_endereco: number;
-  idAddress: number;
-  street: string;
-  number: number;
-  neighborhoods: string;
-  city: string;
-  state: string;
+  rua: string;
+  numero: number;
+  bairro: string;
+  cidade: string;
+  estado: string;
 };
 
 
@@ -68,13 +67,13 @@ const GetAllLibrarys = function () {
 
 
           }}>
-            <h3 style={{ fontSize: '15px' }}>{library.name}</h3>
+            <h3 style={{ fontSize: '15px' }}>{library.nome}</h3>
             <ul style={{ fontSize: "10px" }}>
-              <li>Rua: {library.street}</li>
-              <li>Numero: {library.number}</li>
-              <li>Bairro: {library.neighborhoods}</li>
-              <li>Cidade: {library.city}</li>
-              <li>Estado: {library.state}</li>
+              <li>Rua: {library.rua}</li>
+              <li>Numero: {library.numero}</li>
+              <li>Bairro: {library.bairro}</li>
+              <li>Cidade: {library.cidade}</li>
+              <li>Estado: {library.estado}</li>
             </ul>
           </div>
         ))

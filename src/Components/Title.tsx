@@ -1,5 +1,5 @@
 
-function Titulo() {
+function Title() {
   let nome = "Bibliotecas Maringá";
 
   return (
@@ -18,4 +18,4 @@ function Titulo() {
   );
 }
 
-export default Titulo;
+export default Title;

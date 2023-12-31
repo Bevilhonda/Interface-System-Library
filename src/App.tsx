@@ -1,7 +1,7 @@
 import React from 'react';
-import HomePage from './Components/PageInitial';
+import HomePage from './Pages/PageInitial';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Page2 from "./Pages/Page2";
+import Services from "./Pages/PageAction";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/outraPagina" element={<Page2 />} />
+          <Route path="/outraPagina" element={<Services />} />
           
         </Routes>
         

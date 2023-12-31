@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import React, { useState } from "react";
-import ConsultButton from "../Buttons/BotãoConsultar";
-import RegisterButton from "../Buttons/BotãoCadastrar";
-import UpdateButton from "../Buttons/BotãoAtualizar";
+import ConsultButton from "../Buttons/QueryButton";
+import RegisterButton from "../Buttons/RegisterButton";
+import UpdateButton from "../Buttons/UpdateButton";
 import GetAllLibrarys from "../Components/LibrariesList";
 import GetAllAlthors from "../Components/AuthorsList";
 

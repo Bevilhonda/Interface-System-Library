@@ -1,13 +1,13 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
-import SelecionarUnidade from "./SelectUnit";
+import SelectUnit from "./SelectUnit";
 
 
-function Unidades() {
+function Units() {
 
   const navigate = useNavigate();
 
-  const alteraProximaPagina = function() {
+  const loadNextPage = function() {
     //  aqui vai lógica para processar a nova unidade, se precisar
 
     // Navegue aqui para outra página
@@ -18,7 +18,7 @@ function Unidades() {
     <div>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
 
-        <SelecionarUnidade />
+        <SelectUnit />
 
         <span style={{ marginRight: 30 }}>
           Inserir Nova Unidade:
@@ -28,7 +28,7 @@ function Unidades() {
           variant="contained"
           size="small"
           color="info"
-          onClick={alteraProximaPagina}
+          onClick={loadNextPage}
         >
           Nova Unidade
         </Button>
@@ -38,4 +38,4 @@ function Unidades() {
   );
 }
 
-export default Unidades;
+export default Units;

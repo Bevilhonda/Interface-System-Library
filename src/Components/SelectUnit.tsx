@@ -4,12 +4,12 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { useState } from "react";
-import GetAllLibrarys from './LibrariesList';
 
-export default function SelecionarUnidade() {
+
+export default function SelectUnit() {
   const [unidade, setUnidade] = useState("");
 
-  const alteraEstadoUnidade = (event: SelectChangeEvent) => {
+  const changeState = (event: SelectChangeEvent) => {
     setUnidade(event.target.value as string);
   };
 
@@ -24,7 +24,7 @@ export default function SelecionarUnidade() {
           id="IdUnidades"
           value={unidade}
           label="Unidades"
-          onChange={alteraEstadoUnidade}
+          onChange={changeState}
         >
           <MenuItem value={"Todas"}>Todas Unidades </MenuItem>
 

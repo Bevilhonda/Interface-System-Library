@@ -1,15 +1,15 @@
 
 import React from "react";
-import Unidades from "./Units";
-import Titulo from "./Title";
+import Units from "../Components/Units";
+import Title from "../Components/Title";
 
 
 function HomePage() {
 
   return (
     <div>
-      <Titulo  />
-      <Unidades />
+      <Title  />
+      <Units />
       
     
     </div>
