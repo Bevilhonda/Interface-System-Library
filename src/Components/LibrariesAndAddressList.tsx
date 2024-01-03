@@ -48,7 +48,7 @@ const GetLibrariesAndAddress = function () {
       justifyContent: 'space-between',
       width: 900,
       padding: 10,
-      marginTop: '-430px',
+      marginTop: '-330px',
       marginLeft: '300px',
     }}>
 

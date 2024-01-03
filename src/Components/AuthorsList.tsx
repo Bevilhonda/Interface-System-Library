@@ -49,7 +49,7 @@ const GetAllAlthors = function () {
       justifyContent: 'space-between',
       width: 900,
       padding: 10,
-      marginTop: '-430px',
+      marginTop: '-390px',
       marginLeft: '300px',
     }}>
       {authors ? (
