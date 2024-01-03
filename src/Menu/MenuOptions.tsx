@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ConsultButton from "../Buttons/QueryButton";
 import RegisterButton from "../Buttons/RegisterButton";
 import UpdateButton from "../Buttons/UpdateButton";
-import GetAllLibrarys from "../Components/LibrariesList";
+import GetLibrariesAndAddress from "../Components/LibrariesAndAddressList";
 import GetAllAlthors from "../Components/AuthorsList";
 
 
@@ -25,7 +25,7 @@ const MenuOptions: React.FC = () => {
       }}>
         <h2 style={{ color: "greenyellow", textAlign: "center", marginTop: "-12px" }}>Bibliotecas</h2>
         <div style={{ marginTop: "-10px", display: "flex", flexDirection: "column", gap: "5px" }}>
-          <ConsultButton onButtonClick={() => handleConsultClick(<GetAllLibrarys />)} />
+          <ConsultButton onButtonClick={() => handleConsultClick(<GetLibrariesAndAddress />)} />
           <RegisterButton />
           <UpdateButton />
         </div>

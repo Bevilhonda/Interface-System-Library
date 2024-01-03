@@ -1,15 +1,14 @@
 
-import React from "react";
-import Units from "../Components/Units";
 import Title from "../Components/Title";
-
+import SelectUnit from "../Components/SelectUnit";
+import Units from "../Buttons/Units";
 
 function HomePage() {
 
   return (
     <div>
       <Title  />
-      <Units />
+      <SelectUnit />
       
     
     </div>

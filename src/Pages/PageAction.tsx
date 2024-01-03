@@ -2,12 +2,12 @@ import Paper from '@mui/material/Paper';
 import HomeIcon from '@mui/icons-material/Home';
 import { Link } from 'react-router-dom';
 import MenuOptions from '../Menu/MenuOptions';
+import SelectUnit from '../Components/SelectUnit';
 
 
 function Services() {
   
-  let nome = "Bibliotecas Maringá"
-
+ 
 
   return (
     <div>
@@ -27,9 +27,10 @@ function Services() {
           fontSize: "60px",
           fontFamily: "sans-serif",
           marginTop: '-25px'
-        }}> {nome} </h1>
+        }}> Bibliotecas Maringá </h1>
 
       </div>
+      <SelectUnit />
 
       <Paper style={{
         width: 210,

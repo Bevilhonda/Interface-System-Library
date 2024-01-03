@@ -4,20 +4,37 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { useState } from "react";
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
-export default function SelectUnit() {
+
+function SelectUnit() {
+
   const [unidade, setUnidade] = useState("");
+  const navigate = useNavigate();
 
-  const changeState = (event: SelectChangeEvent) => {
-    setUnidade(event.target.value as string);
+  const changeState = (event: SelectChangeEvent<string>) => {
+    setUnidade(event.target.value);
+
   };
 
-  return (
-    <Box sx={{ minWidth: 250, marginRight: 10 }}>
-      <FormControl fullWidth>
+  
+  function loadNextPage() {
+    // Lógica para processar a nova unidade, se necessário
 
-        <InputLabel id="IdUnidades">Unidades</InputLabel>
+    // Navegue aqui para outra página
+    navigate("/systemLibrary");
+  }
+
+  return (
+
+    <Box sx={{ display: 'flex', maxWidth: "230px",maxHeight:"5px", margin: "auto", alignItems: "center" }}>
+
+
+      <FormControl fullWidth sx={{ marginRight: '5px' }}>
+
+        <InputLabel id="IdUnidades">Cidade</InputLabel>
 
         <Select
           labelId="IdUnidades"
@@ -26,16 +43,22 @@ export default function SelectUnit() {
           label="Unidades"
           onChange={changeState}
         >
-          <MenuItem value={"Todas"}>Todas Unidades </MenuItem>
 
-          <MenuItem value={"Centro"}>Centro</MenuItem>
 
-          <MenuItem value={"Zona sul"}>Zona Sul</MenuItem>
+          <MenuItem value={"Maringá"}>Maringá</MenuItem>
+          <MenuItem value={"Curitiba"}>Curitiba</MenuItem>
+          <MenuItem value={"Londrina"}>Londrina</MenuItem>
 
-          <MenuItem value={"Zona norte"}>Zona Norte</MenuItem>
-          
         </Select>
+
       </FormControl>
+
+      <Button onClick={loadNextPage} variant="contained" color="primary" size="large">
+        Ir
+      </Button>
+
     </Box>
   );
-}
+};
+
+export default SelectUnit;
