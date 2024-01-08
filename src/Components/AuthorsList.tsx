@@ -38,7 +38,6 @@ const GetAllAlthors = function () {
 
   }, []);
 
-  
 
   return (
 
@@ -49,7 +48,7 @@ const GetAllAlthors = function () {
       justifyContent: 'space-between',
       width: 900,
       padding: 10,
-      marginTop: '-390px',
+      marginTop: '-470px',
       marginLeft: '300px',
     }}>
       {authors ? (

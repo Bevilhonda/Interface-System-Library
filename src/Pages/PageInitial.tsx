@@ -1,14 +1,15 @@
 
 import Title from "../Components/Title";
-import SelectUnit from "../Components/SelectUnit";
-import Units from "../Buttons/Units";
+import GetLibraries from "../Components/LibrariesList";
+
 
 function HomePage() {
 
   return (
     <div>
       <Title  />
-      <SelectUnit />
+      
+      <GetLibraries />
       
     
     </div>

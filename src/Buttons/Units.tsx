@@ -1,6 +1,6 @@
 
 import { useNavigate } from "react-router-dom";
-import SelectUnit from "../Components/SelectUnit";
+
 
 function Units() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ function Units() {
     <div>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         
-        <SelectUnit />
+      
 
         <button onClick={loadNextPage}>Ir para a próxima página</button>
         

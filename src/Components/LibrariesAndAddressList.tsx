@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-type DTOLibraries = {
+type LibraryEntity = {
   idLibrary: number;
   nome: string;
-  fk_endereco: number;
   rua: string;
   numero: number;
   bairro: string;
@@ -14,19 +13,19 @@ type DTOLibraries = {
 
 
 const GetLibrariesAndAddress = function () {
-  const [libraries, setLibraries] = useState<DTOLibraries[] | null>(null);
+  const [libraries, setLibraries] = useState<LibraryEntity[] | null>(null);
 
   const searchDataLibrarys = async function () {
 
 
     try {
 
-      const response = await axios.get('http://localhost:8080/FullLibraries');
+      const response = await axios.get('http://localhost:8080/Libraries');
 
       //console.log(response.data);
       //console.log(response.data.listAddress);
 
-      setLibraries(response.data.listAddress);
+      setLibraries(response.data.libraryList);
 
     } catch (error) {
       console.error('Erro na requisição:', error);
@@ -48,12 +47,12 @@ const GetLibrariesAndAddress = function () {
       justifyContent: 'space-between',
       width: 900,
       padding: 10,
-      marginTop: '-330px',
+      marginTop: '-470px',
       marginLeft: '300px',
     }}>
 
       {libraries ? (
-        libraries.map((library: DTOLibraries) => (
+        libraries.map((library: LibraryEntity) => (
           <div key={library.idLibrary?.toString()} style={{
             color: 'greenyellow',
             backgroundColor: "black",

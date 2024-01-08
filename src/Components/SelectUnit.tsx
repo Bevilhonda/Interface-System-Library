@@ -1,11 +1,10 @@
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { useState } from "react";
-import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -34,7 +33,7 @@ function SelectUnit() {
 
       <FormControl fullWidth sx={{ marginRight: '5px' }}>
 
-        <InputLabel id="IdUnidades">Cidade</InputLabel>
+        <InputLabel id="IdUnidades">Bibliotecas</InputLabel>
 
         <Select
           labelId="IdUnidades"
@@ -43,20 +42,11 @@ function SelectUnit() {
           label="Unidades"
           onChange={changeState}
         >
-
-
-          <MenuItem value={"Maringá"}>Maringá</MenuItem>
-          <MenuItem value={"Curitiba"}>Curitiba</MenuItem>
-          <MenuItem value={"Londrina"}>Londrina</MenuItem>
-
+          
         </Select>
 
       </FormControl>
-
-      <Button onClick={loadNextPage} variant="contained" color="primary" size="large">
-        Ir
-      </Button>
-
+      
     </Box>
   );
 };

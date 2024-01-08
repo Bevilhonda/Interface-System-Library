@@ -9,7 +9,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/systemLibrary" element={<Services />} />
+          <Route path="/systemLibrary/:libraryId" element={<Services />} />
           
         </Routes>
         
