@@ -1,6 +1,6 @@
 
 import Title from "../Components/Title";
-import GetLibraries from "../Components/LibrariesList";
+import GetLibraries from "../Components/GetAllLibraries";
 
 
 function HomePage() {

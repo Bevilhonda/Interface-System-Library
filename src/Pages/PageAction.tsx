@@ -6,12 +6,10 @@ import { useLocation } from 'react-router-dom';
 
 
 
-function Services() {
+function PageAction() {
 
   const location = useLocation();
   const libraryDetails = location.state?.libraryDetails || null;
-
-
 
 
   return (
@@ -69,13 +67,18 @@ function Services() {
 
 
           }}>
-            <h2>Detalhes da Biblioteca</h2>
-            <p>Nome: {libraryDetails.nome}</p>
+            
+            <h3 style={{ fontSize: '15px' }}>Nome da Biblioteca : {libraryDetails.nome}</h3>
+            <ul style={{ fontSize: "15px" }}>
+            <p>Endereço:</p>
             <p>Rua: {libraryDetails.rua}</p>
             <p>Número: {libraryDetails.numero}</p>
             <p>Cidade: {libraryDetails.cidade}</p>
             <p>Bairro: {libraryDetails.bairro}</p>
             <p>Estado: {libraryDetails.estado}</p>
+
+            </ul>
+            
 
           </div>
         )}
@@ -87,4 +90,4 @@ function Services() {
     </div>
   )
 }
-export default Services
+export default PageAction

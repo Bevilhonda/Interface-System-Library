@@ -24,13 +24,13 @@ const GetLibraries = function () {
 
   function loadNextPage() {
 
-    if (selectedLibrary !== null) {
-
-      const selectedLibraryDetails = libraries?.find(library => library.id_biblioteca === selectedLibrary);
+    
+      const selectedLibraryDetails =  libraries?.find(library => library.id_biblioteca === selectedLibrary);
       // Navegar para a próxima página incluindo o ID da biblioteca como parâmetro
-      navigate(`/systemLibrary/${selectedLibrary}`,
+      navigate(`/systemLibrary/`,
+
        { state: { libraryDetails: selectedLibraryDetails } });
-    }
+    
   }
 
 
@@ -52,21 +52,17 @@ const GetLibraries = function () {
     searchListLibraries();
   }, []); // Carrega as bibliotecas quando o componente for montado
 
-  useEffect(() => {
-    if (selectedLibrary !== null && libraries !== null && libraries.length === 0) {
-      searchListLibraries();
-    }
-  }, [selectedLibrary, libraries]); /* dependências para que se o valor de alguma for alterado ,
-   vai chamar a função searchListLibraries() novamente  */
+ 
 
   const LibraryChange = (event: SelectChangeEvent<number>) => {
     setSelectedLibrary(Number(event.target.value));
-    loadNextPage();
-  
+
   };
 
+  if(selectedLibrary !== null){
+    loadNextPage();
+  }
   
-
 
   return (
 
