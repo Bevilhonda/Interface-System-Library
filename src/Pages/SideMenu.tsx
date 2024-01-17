@@ -5,11 +5,10 @@ import MenuOptions from '../Menu/MenuOptions';
 import { useLocation } from 'react-router-dom';
 
 
-
-function PageAction() {
-
+function SideMenu() {
   const location = useLocation();
   const libraryDetails = location.state?.libraryDetails || null;
+
 
 
   return (
@@ -67,27 +66,24 @@ function PageAction() {
 
 
           }}>
-            
+
+
             <h3 style={{ fontSize: '15px' }}>Nome da Biblioteca : {libraryDetails.nome}</h3>
             <ul style={{ fontSize: "15px" }}>
-            <p>Endereço:</p>
-            <p>Rua: {libraryDetails.rua}</p>
-            <p>Número: {libraryDetails.numero}</p>
-            <p>Cidade: {libraryDetails.cidade}</p>
-            <p>Bairro: {libraryDetails.bairro}</p>
-            <p>Estado: {libraryDetails.estado}</p>
+              <p>Endereço:</p>
+              <p>Rua: {libraryDetails.rua}</p>
+              <p>Número: {libraryDetails.numero}</p>
+              <p>Cidade: {libraryDetails.cidade}</p>
+              <p>Bairro: {libraryDetails.bairro}</p>
+              <p>Estado: {libraryDetails.estado}</p>
 
             </ul>
-            
 
           </div>
         )}
       </div>
 
-
-
-
     </div>
   )
 }
-export default PageAction
+export default SideMenu

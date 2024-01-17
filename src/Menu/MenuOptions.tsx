@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
 import React, { useState } from "react";
-import ConsultButton from "../Buttons/QueryButton";
+import ConsultButton from "../Buttons/ConsultButton";
 import RegisterButton from "../Buttons/RegisterButton";
 import UpdateButton from "../Buttons/UpdateButton";
 import GetLibrariesAndAddress from "../Components/LibrariesAndAddressList";
-import GetAllAlthors from "../Components/AuthorsList";
+import GetAuthorsInLibrary from "../Components/GetAuthorsInLibrary";
 
 
 const MenuOptions: React.FC = () => {
@@ -42,7 +42,7 @@ const MenuOptions: React.FC = () => {
       }}>
         <h2 style={{ color: "greenyellow", textAlign: "center", marginTop: "-12px" }}>Autores</h2>
         <div style={{ marginTop: "-10px", display: "flex", flexDirection: "column", gap: "5px" }}>
-          <ConsultButton onButtonClick={() => handleConsultClick(<GetAllAlthors/>)}/>
+          <ConsultButton onButtonClick={() => handleConsultClick(<GetAuthorsInLibrary />)}/>
           <RegisterButton />
           <UpdateButton />
         </div>
