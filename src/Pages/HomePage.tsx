@@ -1,6 +1,5 @@
 
-import Title from "../Components/Title";
-import GetAllLibraries from "../Components/GetAllLibraries";
+import LibraryDropDown from "../Components/LibraryDropDown";
 import { useState } from "react";
 
 
@@ -11,11 +10,10 @@ function HomePage() {
 
   return (
     <div>
-      <Title />
 
-      <GetAllLibraries
+      <LibraryDropDown
         selectedLibrary={selectedLibrary} setSelectedLibrary={setSelectedLibrary} />
-
+        
 
     </div>
   )
