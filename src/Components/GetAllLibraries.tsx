@@ -1,47 +1,28 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Button } from '@mui/material';
 
 type LibraryEntity = {
-  id_biblioteca: number;
+  idLibrary: number;
   nome: string;
   rua: string;
   numero: number;
-  cidade: string;
   bairro: string;
+  cidade: string;
   estado: string;
-}
+};
 
 
-const GetAllLibraries = function (props: {
-  selectedLibrary: Number | null;
-  setSelectedLibrary: (x: Number) => void
-}) {
-
-
+const GetAllLibraries = function () {
+  
   const [libraries, setLibraries] = useState<LibraryEntity[] | null>(null);
 
-  const navigate = useNavigate();
+  const searchDataLibrarys = async function () {
 
-  function loadNextPage() {
-
-
-    const selectedLibraryDetails = libraries?.find(
-      library => library.id_biblioteca === props.selectedLibrary);
-    
-    if (selectedLibraryDetails) {
-
-      navigate(`/systemLibrary/`, { state: { libraryDetails: selectedLibraryDetails } });
-
-    }
-  }
-
-  const getLibraries = async function () {
 
     try {
-      const response = await axios.get(`http://localhost:8080/Libraries`);
+
+      const response = await axios.get('http://localhost:8080/Libraries');
 
       setLibraries(response.data.libraryList);
 
@@ -50,50 +31,53 @@ const GetAllLibraries = function (props: {
     }
   };
 
-  useEffect(() => {
-    getLibraries();
-  }, []); // Carrega as bibliotecas quando o componente for montado
 
+  useEffect(function () {
 
+    searchDataLibrarys();
 
-  const LibraryChange = (event: SelectChangeEvent<Number>) => {
-    props.setSelectedLibrary(Number(event.target.value));
-
-
-  };
-  if (props.selectedLibrary !== null) {
-    loadNextPage();
-  }
-
+  }, []);
 
   return (
-    <Box>
 
-      <Box sx={{ display: 'flex', maxWidth: "230px", maxHeight: "5px", margin: "auto", alignItems: "center" }}>
+    <div style={{
 
-        <FormControl fullWidth sx={{ marginRight: '5px' }}>
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      width: 900,
+      padding: 10,
+      marginTop: '-550px',
+      marginLeft: '250px',
+    }}>
 
-          <InputLabel id="library-select-label">Selecione uma biblioteca</InputLabel>
+      {libraries ? (
+        libraries.map((library: LibraryEntity) => (
+          <Button key={library.idLibrary?.toString()}>
+          <div style={{
+            color: 'greenyellow',
+            backgroundColor: "black",
+            padding: '5px',
+            border: '2px solid #ddd',
+            borderRadius: '15px',
+            boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)',
+            boxSizing: 'border-box',
+            width: '155px',
+            height: "60px",
+            marginBottom: '15px',
+            marginRight: '-20px'
+          }}>
 
-          <Select
-            labelId="library-select-label"
-            id="library-select"
-            value={props.selectedLibrary || ""}
-            label="Selecione uma biblioteca"
-            onChange={LibraryChange}
+              <h6 style={{fontSize:'11px',marginTop:'2px' }}>{library.nome}</h6>
 
-          >
-            {libraries && libraries.map((library) => (
-              <MenuItem key={library.id_biblioteca} value={library.id_biblioteca}>
-                {library.nome}
-              </MenuItem>
-            ))}
-          </Select>
+            </div>
+          </Button>
+        ))
+      ) : (
+        <p style={{ color: 'greenyellow', fontSize: '18px' }}>Carregando bibliotecas...</p>
+      )}
+    </div>
 
-        </FormControl>
-      </Box>
-
-    </Box>
   );
 };
 
