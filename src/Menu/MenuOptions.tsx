@@ -3,16 +3,22 @@ import React, { useState } from "react";
 import ConsultButton from "../Buttons/ConsultButton";
 import RegisterButton from "../Buttons/RegisterButton";
 import UpdateButton from "../Buttons/UpdateButton";
-import GetLibrariesAndAddress from "../Components/LibrariesAndAddressList";
+import GetAllLibraries from "../Components/GetAllLibraries";
 import GetAuthorsInLibrary from "../Components/GetAuthorsInLibrary";
+import GetBooksInLibrary from "../Components/GetAllBooksInLibrary";
+import InputFormBook from "../Components/InputFormBook";
+import InputFormAuthor from "../Components/InputFormAuthor";
+import InputFormLibrary from "../Components/InputFormLibrary";
 
 
 const MenuOptions: React.FC = () => {
   const [activeComponent, setActiveComponent] = useState<React.ReactNode | null>(null);
 
+
   const handleConsultClick = (component: React.ReactNode) => {
     setActiveComponent(component);
   };
+
   return (
     <div>
       <Box style={{
@@ -24,9 +30,15 @@ const MenuOptions: React.FC = () => {
         alignItems: "center",
       }}>
         <h2 style={{ color: "greenyellow", textAlign: "center", marginTop: "-12px" }}>Bibliotecas</h2>
+
         <div style={{ marginTop: "-10px", display: "flex", flexDirection: "column", gap: "5px" }}>
-          <ConsultButton onButtonClick={() => handleConsultClick(<GetLibrariesAndAddress />)} />
-          <RegisterButton />
+
+          <ConsultButton onButtonClick={() =>
+            handleConsultClick(<GetAllLibraries />)} />
+
+          <RegisterButton onButtonClick={() => 
+            handleConsultClick(<InputFormLibrary />)} />
+
           <UpdateButton />
         </div>
 
@@ -41,9 +53,15 @@ const MenuOptions: React.FC = () => {
         alignItems: "center",
       }}>
         <h2 style={{ color: "greenyellow", textAlign: "center", marginTop: "-12px" }}>Autores</h2>
+
         <div style={{ marginTop: "-10px", display: "flex", flexDirection: "column", gap: "5px" }}>
-          <ConsultButton onButtonClick={() => handleConsultClick(<GetAuthorsInLibrary />)}/>
-          <RegisterButton />
+
+          <ConsultButton onButtonClick={() =>
+            handleConsultClick(<GetAuthorsInLibrary />)} />
+
+          <RegisterButton onButtonClick={() =>
+            handleConsultClick(<InputFormAuthor />)} />
+
           <UpdateButton />
         </div>
 
@@ -57,9 +75,15 @@ const MenuOptions: React.FC = () => {
         alignItems: "center",
       }}>
         <h2 style={{ color: "greenyellow", textAlign: "center", marginTop: "-12px" }}>Livros</h2>
+
         <div style={{ marginTop: "-10px", display: "flex", flexDirection: "column", gap: "5px" }}>
-          <ConsultButton />
-          <RegisterButton />
+
+          <ConsultButton onButtonClick={() =>
+            handleConsultClick(<GetBooksInLibrary />)} />
+
+          <RegisterButton onButtonClick={() =>
+            handleConsultClick(<InputFormBook />)} />
+
           <UpdateButton />
         </div>
 
