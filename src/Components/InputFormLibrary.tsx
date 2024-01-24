@@ -26,7 +26,7 @@ function InputFormLibrary() {
 
   useEffect(() => {
 
-    const searchData = async () => {
+    const buscarUfAPIIBGE = async () => {
       try {
 
         const response = await axios.get(
@@ -39,10 +39,10 @@ function InputFormLibrary() {
       }
     };
 
-    searchData();
+    buscarUfAPIIBGE();
   }, []);
 
-  const handleUFChange = async (event: SelectChangeEvent<string>) => {
+  const mudancaDeEstado = async (event: SelectChangeEvent<string>) => {
 
     const uf = event.target.value;
 
@@ -67,7 +67,7 @@ function InputFormLibrary() {
     }
   };
 
-  const handleCidadeChange = (event: SelectChangeEvent<string>) => {
+  const mudancaDeCidade = (event: SelectChangeEvent<string>) => {
 
     setSelectedCidade(event.target.value);
 
@@ -118,7 +118,7 @@ function InputFormLibrary() {
                 id="select-uf"
                 value={selectedUF}
                 label="UF"
-                onChange={(event: SelectChangeEvent<string>) => handleUFChange(event)}
+                onChange={(event: SelectChangeEvent<string>) => mudancaDeEstado(event)}
               >
                 <MenuItem value="" disabled>
                   Selecione uma opção
@@ -138,7 +138,7 @@ function InputFormLibrary() {
                 id="select-cidade"
                 value={selectedCidade}
                 label="Cidade"
-                onChange={handleCidadeChange}
+                onChange={mudancaDeCidade}
               >
                 <MenuItem value="0">Selecione uma opção</MenuItem>
                 {cidades.map((cidade, index) => (

@@ -19,7 +19,7 @@ const InputFormBook = function () {
     fk_biblioteca: idLibrary
   });
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const entradaDeDados = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setBookData((prevData) => ({
       ...prevData,
@@ -27,7 +27,7 @@ const InputFormBook = function () {
     }));
   };
 
-  const handleSubmit = async (eventForm: React.FormEvent) => {
+  const enviarDados = async (eventForm: React.FormEvent) => {
     eventForm.preventDefault();
 
     try {
@@ -54,7 +54,7 @@ const InputFormBook = function () {
 
   return (
 
-    <form onSubmit={handleSubmit} id="bookForm">
+    <form onSubmit={enviarDados} id="bookForm">
 
       <Paper elevation={3} style={{
         padding: '20px',
@@ -73,28 +73,28 @@ const InputFormBook = function () {
               variant="outlined"
               fullWidth margin="normal" 
               value={bookData.titulo}
-              onChange={handleInputChange} />
+              onChange={entradaDeDados} />
 
             <TextField
               id="data_publication" name="data_publication" label="Data Publicação"
               variant="outlined"
               fullWidth margin="normal" 
               value={bookData.data_publication}
-              onChange={handleInputChange}/>
+              onChange={entradaDeDados}/>
 
             <TextField
               id="edicao" name="edicao" label="Edição"
               variant="outlined"
               fullWidth margin="normal"
               value={bookData.edicao}
-              onChange={handleInputChange} />
+              onChange={entradaDeDados} />
 
               <TextField
               id="fk_autor" name="fk_autor" label="Autor"
               variant="outlined"
               fullWidth margin="normal"
               value={bookData.fk_autor}
-              onChange={handleInputChange} />
+              onChange={entradaDeDados} />
 
           </FormGroup>
         </Box>

@@ -10,7 +10,7 @@ const InputFormAuthor = function () {
     data_nascimento: '',
   });
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const entradaDeDados = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     setAuthorData((prevData) => ({
@@ -21,7 +21,7 @@ const InputFormAuthor = function () {
 
   };
 
-  const handleSubmit = async (eventForm: React.FormEvent) => {
+  const enviarDados = async (eventForm: React.FormEvent) => {
 
     eventForm.preventDefault();
 
@@ -44,7 +44,7 @@ const InputFormAuthor = function () {
 
   return (
 
-    <form onSubmit={handleSubmit} id="authorForm">
+    <form onSubmit={enviarDados} id="authorForm">
 
       <Paper elevation={3} style={{
         padding: '20px',
@@ -63,21 +63,21 @@ const InputFormAuthor = function () {
               variant="outlined"
               fullWidth margin="normal"
               value={authorData.nome}
-              onChange={handleInputChange} />
+              onChange={entradaDeDados} />
 
             <TextField
               id="sobrenome" name="sobrenome" label="Sobrenome"
               variant="outlined"
               fullWidth margin="normal"
               value={authorData.sobrenome}
-              onChange={handleInputChange} />
+              onChange={entradaDeDados} />
 
             <TextField
               id="data_nascimento" name="data_nascimento" label="Data Nascimento"
               variant="outlined"
               fullWidth margin="normal"
               value={authorData.data_nascimento}
-              onChange={handleInputChange} />
+              onChange={entradaDeDados} />
 
           </FormGroup>
         </Box>
