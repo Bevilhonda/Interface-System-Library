@@ -15,6 +15,7 @@ type ListAuthorResponse = {
 const GetAuthorsInLibrary = function () {
 
   const location = useLocation();
+
   const getIdLibrary = location.state?.libraryDetails || null;
 
   const idLibrary = getIdLibrary.id_biblioteca;
@@ -42,6 +43,7 @@ const GetAuthorsInLibrary = function () {
 
   }, [idLibrary]);
 
+   
   return (
     <div style={{
 

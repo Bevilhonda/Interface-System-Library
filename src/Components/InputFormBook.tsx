@@ -1,15 +1,22 @@
 import { Box, Button, FormGroup, Paper, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const InputFormBook = function () {
+
+  const location = useLocation();
+  
+  const getIdLibrary = location.state?.libraryDetails || null;
+
+  const idLibrary = getIdLibrary.id_biblioteca;
 
   const [bookData, setBookData] = useState({
     titulo: " ",
     data_publication: "",
     edicao: "",
     fk_autor: "",
-    fk_biblioteca: ""
+    fk_biblioteca: idLibrary
   });
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,7 +40,7 @@ const InputFormBook = function () {
         data_publication: "",
         edicao: "",
         fk_autor: "",
-        fk_biblioteca: ""
+        fk_biblioteca: idLibrary
       });
 
     } catch (error) {
@@ -42,6 +49,8 @@ const InputFormBook = function () {
       alert('Erro ao cadastrar livro. Verifique o console para mais detalhes.');
     }
   };
+
+  const [selectedAuthor, setSelectedAuthor] = useState<string>("");
 
   return (
 
@@ -85,13 +94,6 @@ const InputFormBook = function () {
               variant="outlined"
               fullWidth margin="normal"
               value={bookData.fk_autor}
-              onChange={handleInputChange} />
-
-              <TextField
-              id="fk_biblioteca" name="fk_biblioteca" label="Biblioteca"
-              variant="outlined"
-              fullWidth margin="normal"
-              value={bookData.fk_biblioteca}
               onChange={handleInputChange} />
 
           </FormGroup>
