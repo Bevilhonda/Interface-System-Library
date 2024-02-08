@@ -1,12 +1,15 @@
 
 import LibraryDropDown from "../Components/LibraryDropDown";
 import { useState } from "react";
+import SideMenu from "./SideMenu";
+import { LibraryEntity } from '../Components/LibraryDropDown';
+
 
 
 
 function HomePage() {
 
-  const [selectedLibrary, setSelectedLibrary] = useState<Number | null>(null);
+  const [selectedLibrary, setSelectedLibrary] = useState<LibraryEntity | null>(null);
 
   return (
     <div>
@@ -15,6 +18,8 @@ function HomePage() {
         selectedLibrary={selectedLibrary} setSelectedLibrary={setSelectedLibrary} />
         
 
+        <SideMenu selectedLibrary={selectedLibrary} />
+        
     </div>
   )
 }

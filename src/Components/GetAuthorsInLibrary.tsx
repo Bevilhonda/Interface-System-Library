@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import {LibraryEntity} from '../Components/LibraryDropDown';
+
 
 type Author = {
   nome: string;
@@ -12,13 +13,10 @@ type ListAuthorResponse = {
 };
 
 
-const GetAuthorsInLibrary = function () {
+const GetAuthorsInLibrary = function (props: { selectedLibrary: LibraryEntity | null }) {
 
-  const location = useLocation();
 
-  const getIdLibrary = location.state?.libraryDetails || null;
-
-  const idLibrary = getIdLibrary.id_biblioteca;
+  const idLibrary = props.selectedLibrary?.id_biblioteca ;
 
   const [listAuthors, setListAuthors] = useState<Author[] | null>(null);
 

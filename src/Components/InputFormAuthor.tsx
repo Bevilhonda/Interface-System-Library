@@ -2,7 +2,18 @@ import { Box, Button, FormGroup, Paper, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 
+type Message ={
+  messageList:string;
+}
+
+type ListMessage = {
+  listMessage : Message[];
+
+}
+
 const InputFormAuthor = function () {
+
+  const[messageAlert,setMessaALert] = useState<ListMessage | null> (null) ;
 
   const [authorData, setAuthorData] = useState({
     nome: '',
@@ -28,17 +39,23 @@ const InputFormAuthor = function () {
     try {
       const response = await axios.post('http://localhost:8080/InsertAuthor', authorData);
 
-      alert('Autor cadastrado com sucesso!');
-
+      setMessaALert(response.data);
+      
+  
+        alert('Autor cadastrado com sucesso!');
+      
       setAuthorData({
         nome: '',
         sobrenome: '',
         data_nascimento: '',
       });
+     
     } catch (error) {
-      console.error('Erro ao cadastrar autor:', error);
+      console.error('Erro ao cadastrar autor:',error);
 
-      alert('Erro ao cadastrar autor. Verifique o console para mais detalhes.');
+
+      alert(messageAlert);
+
     }
   };
 

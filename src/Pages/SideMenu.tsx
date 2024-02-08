@@ -1,13 +1,10 @@
 import Paper from '@mui/material/Paper';
 import MenuOptions from '../Menu/MenuOptions';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
+import {LibraryEntity} from '../Components/LibraryDropDown'
 
-
-function SideMenu() {
-
-  const location = useLocation();
-  const libraryDetails = location.state?.libraryDetails || null;
+function SideMenu(props: { selectedLibrary: LibraryEntity | null }) {
 
 
   return (
@@ -38,12 +35,12 @@ function SideMenu() {
           boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)',
 
         }}>
-          <MenuOptions />
+          <MenuOptions selectedLibrary={props.selectedLibrary} />
 
         </Paper>
 
         <div>
-          {libraryDetails && (
+          {props.selectedLibrary &&(
             <div style={{
               marginTop: '-525px',
               marginLeft: '-1px',
@@ -65,8 +62,7 @@ function SideMenu() {
               <h3 style={{
                 fontSize: '15px',
                 marginTop: '-1px'
-              }}>Biblioteca selecionada: {
-              libraryDetails.nome}  </h3>
+              }}>Biblioteca selecionada: {props.selectedLibrary.nome}  </h3>
 
             </div>
           )}

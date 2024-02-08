@@ -1,10 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
-
-type LibraryEntity = {
+export interface LibraryEntity {
   id_biblioteca: number;
   nome: string;
   rua: string;
@@ -15,23 +13,13 @@ type LibraryEntity = {
 }
 
 const LibraryDropDown = function (props: {
-  selectedLibrary: Number | null;
-  setSelectedLibrary: (x: Number) => void
+  selectedLibrary: LibraryEntity | null;
+  setSelectedLibrary: (library: LibraryEntity | null) => void;
 }) {
 
 
-  const [libraries, setLibraries] = useState<LibraryEntity[] | null>(null);
-
-  const navigate = useNavigate();
-
-  function loadNextPage() {
-
-    const selectedLibraryDetails = libraries?.find(
-      library => library.id_biblioteca === props.selectedLibrary);
-    
-      navigate(`/systemLibrary/`, { state: { libraryDetails: selectedLibraryDetails } });
-
-  }
+  const [libraries, setLibraries] = useState<LibraryEntity[] | null> (null);
+  
 
   const getLibraries = async function () {
 
@@ -48,49 +36,55 @@ const LibraryDropDown = function (props: {
   useEffect(() => {
     getLibraries();
   }, []); // Carrega as bibliotecas quando o componente for montado
-  
+
 
   const LibraryChange = (event: SelectChangeEvent<Number>) => {
-    props.setSelectedLibrary(Number(event.target.value));
+    const selectedLibraryId = Number(event.target.value);
     
+    if (libraries) {
+      const selectedLibrary = libraries.find(library => library.id_biblioteca === selectedLibraryId);
+      
+      if (selectedLibrary) {
+        props.setSelectedLibrary(selectedLibrary);
+      }
+    }
   };
-  if (props.selectedLibrary !== null) {
-    loadNextPage();
-  }
- 
 
   return (
     <Box>
 
-      <Box sx={{ 
+      <Box sx={{
         display: 'flex',
-         maxWidth: "230px", 
-         maxHeight: "5px", 
-         margin: "auto", 
-         alignItems: "center" }}>
+        maxWidth: "230px",
+        maxHeight: "5px",
+        margin: "auto",
+        alignItems: "center"
+      }}>
 
         <FormControl fullWidth sx={{ marginRight: '5px' }}>
 
           <InputLabel id="library-select-label">Selecione uma biblioteca</InputLabel>
           
-
           <Select
             labelId="library-select-label"
             id="library-select"
-            value={props.selectedLibrary || ""}
+            value={props.selectedLibrary?.id_biblioteca || ""}
             label="Selecione uma biblioteca"
             onChange={LibraryChange}
 
           >
             {libraries && libraries.map((library) => (
+
               <MenuItem key={library.id_biblioteca} value={library.id_biblioteca}>
-                {library.nome}
+                {`${library.nome} ${library.id_biblioteca} `}
+                
               </MenuItem>
+
             ))}
           </Select>
 
         </FormControl>
-        
+
       </Box>
 
     </Box>

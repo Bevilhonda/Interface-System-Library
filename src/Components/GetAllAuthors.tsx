@@ -2,8 +2,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-type AuthorEntity = {
-  id_autor: number;
+
+export type AuthorEntity = {
+  id: number;
   name: {
     name: string;
     lastName: string;
@@ -11,23 +12,33 @@ type AuthorEntity = {
   data_nascimento: string;
 };
 
-const GetAllAlthors = function () {
+interface GetAllAlthorsProps {
+  sendListAuthors: (authors: AuthorEntity[] | null) => void;
+}
 
-  const [authors, setAthors] = useState<AuthorEntity[] | null> (null);
+const GetAllAlthors: React.FC<GetAllAlthorsProps> = function ({ sendListAuthors }) {
 
-  
+  const [authors, setAuthors] = useState<AuthorEntity[] | null>(null);
+
+
   const searchDataAuthors = async function () {
 
     try {
       const response = await axios.get('http://localhost:8080/Authors');
 
-      console.log(response.data);
+      if (response.data && response.data.responseList) {
 
-      setAthors(response.data.responseList);
+        setAuthors(response.data.responseList);
+        sendListAuthors(response.data.responseList);
 
-    }
-    catch (error) {
+      } else {
+        console.error('Resposta da requisição inválida:', response);
+
+      }
+    } catch (error) {
+
       console.error('Erro na requisição:', error);
+
     }
   };
 
@@ -41,45 +52,19 @@ const GetAllAlthors = function () {
 
   return (
 
-    <div style={{
-
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-between',
-      width: 900,
-      padding: 10,
-      marginTop: '-550px',
-      marginLeft: '250px',
-    }}>
+    <div >
       {authors ? (
         authors.map((author: AuthorEntity) => (
-          
-          <div key={author.id_autor?.toString()}
-            style={{
-              color: 'greenyellow',
-              backgroundColor:"black",
-              padding: '5px',
-              border: '2px solid #ddd',
-              borderRadius: '15px',
-              boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)',
-              boxSizing: 'border-box',
-              width: '155px', 
-              height:"150px",
-              marginBottom: '15px',
-              marginRight: '-20px'
 
-            }}>
-            <h3 style={{ fontSize: '15px' }}>{`${author.name.name} ${author.name.lastName}`} </h3>
-            <ul style={{fontSize:"10px"}}>
-            <li>Nome: {`${author.name.name} ${author.name.lastName}`} </li>
-            <li>Data de Nascimento: {new Date(author.data_nascimento).toLocaleDateString()}</li>
-            </ul>
-
+          <div key={author.id}>
+            
           </div>
         ))
       ) : (
         <p style={{ color: 'greenyellow', fontSize: '18px' }}>Carregando Autores...</p>
       )}
+
+
     </div>
 
   );

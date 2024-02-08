@@ -18,9 +18,9 @@ type BotaodoMenuProps = {
 };
 
 const BotaodoMenu = (props: BotaodoMenuProps) => {
-  return <BotaoModificado onClick={props.onButtonClick}>
-    {props.nomeBotao}
-  </BotaoModificado>;
+
+  return (
+  <BotaoModificado onClick={props.onButtonClick}> {props.nomeBotao} </BotaoModificado>);
 };
 
 export default BotaodoMenu;

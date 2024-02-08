@@ -1,25 +1,28 @@
-import { Box, Button, FormGroup, Paper, TextField } from "@mui/material";
+import { Box, Button, FormGroup, InputLabel, MenuItem, Paper, Select, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { LibraryEntity } from '../Components/LibraryDropDown';
+import GetAllAlthors, { AuthorEntity } from '../Components/GetAllAuthors';
 
-const InputFormBook = function () {
 
-  const location = useLocation();
-  
-  const getIdLibrary = location.state?.libraryDetails || null;
+const InputFormBook = function (props: { selectedLibrary: LibraryEntity | null }) {
 
-  const idLibrary = getIdLibrary.id_biblioteca;
+  const [authorsList, setAuthorsList] = useState<AuthorEntity[] | null>(null);
+
+  const handleAuthorsReceived = (authors: AuthorEntity[] | null) => {
+    setAuthorsList(authors);
+  };
 
   const [bookData, setBookData] = useState({
     titulo: " ",
     data_publication: "",
     edicao: "",
     fk_autor: "",
-    fk_biblioteca: idLibrary
+    fk_biblioteca: props.selectedLibrary?.id_biblioteca
   });
 
   const entradaDeDados = (event: React.ChangeEvent<HTMLInputElement>) => {
+
     const { name, value } = event.target;
     setBookData((prevData) => ({
       ...prevData,
@@ -32,7 +35,7 @@ const InputFormBook = function () {
 
     try {
       const response = await axios.post('http://localhost:8080/InsertBook', bookData);
-      
+
       alert('Livro cadastrado com sucesso!');
 
       setBookData({
@@ -40,7 +43,7 @@ const InputFormBook = function () {
         data_publication: "",
         edicao: "",
         fk_autor: "",
-        fk_biblioteca: idLibrary
+        fk_biblioteca: props.selectedLibrary?.id_biblioteca
       });
 
     } catch (error) {
@@ -50,7 +53,6 @@ const InputFormBook = function () {
     }
   };
 
-  const [selectedAuthor, setSelectedAuthor] = useState<string>("");
 
   return (
 
@@ -67,20 +69,20 @@ const InputFormBook = function () {
         <Box mb={2}>
           <FormGroup>
             <legend>Cadastrar Livro</legend>
-            
+
             <TextField
               id="titulo" name="titulo" label="Titulo"
               variant="outlined"
-              fullWidth margin="normal" 
+              fullWidth margin="normal"
               value={bookData.titulo}
               onChange={entradaDeDados} />
 
             <TextField
               id="data_publication" name="data_publication" label="Data Publicação"
               variant="outlined"
-              fullWidth margin="normal" 
+              fullWidth margin="normal"
               value={bookData.data_publication}
-              onChange={entradaDeDados}/>
+              onChange={entradaDeDados} />
 
             <TextField
               id="edicao" name="edicao" label="Edição"
@@ -89,12 +91,31 @@ const InputFormBook = function () {
               value={bookData.edicao}
               onChange={entradaDeDados} />
 
-              <TextField
-              id="fk_autor" name="fk_autor" label="Autor"
-              variant="outlined"
-              fullWidth margin="normal"
+
+            <GetAllAlthors sendListAuthors={handleAuthorsReceived} />
+
+            <InputLabel id="author-select-label">Selecione um Autor</InputLabel>
+
+
+            <Select
+              labelId="author-select-label"
+              id="author-select"
               value={bookData.fk_autor}
-              onChange={entradaDeDados} />
+              label="Selecione um Autor"
+              onChange={(e) => setBookData({ ...bookData, fk_autor: e.target.value })}
+
+            >
+              <MenuItem value="">
+                Selecione um Autor
+              </MenuItem>
+              {authorsList && authorsList.map((author) => (
+
+                <MenuItem key={author.id} value={author.id}>
+                  {`${author.name.name} ${author.name.lastName} ${author.id}`}
+                </MenuItem>
+
+              ))}
+            </Select>
 
           </FormGroup>
         </Box>

@@ -9,16 +9,22 @@ import GetBooksInLibrary from "../Components/GetAllBooksInLibrary";
 import InputFormBook from "../Components/InputFormBook";
 import InputFormAuthor from "../Components/InputFormAuthor";
 import InputFormLibrary from "../Components/InputFormLibrary";
+import {LibraryEntity} from '../Components/LibraryDropDown';
+
+interface MenuOptionsProps {
+  selectedLibrary: LibraryEntity | null;
+}
 
 
-const MenuOptions: React.FC = () => {
+const MenuOptions: React.FC<MenuOptionsProps> = (props: { selectedLibrary: LibraryEntity | null }) => {
+  
   const [activeComponent, setActiveComponent] = useState<React.ReactNode | null>(null);
-
 
   const handleConsultClick = (component: React.ReactNode) => {
     setActiveComponent(component);
   };
 
+  
   return (
     <div>
       <Box style={{
@@ -57,7 +63,8 @@ const MenuOptions: React.FC = () => {
         <div style={{ marginTop: "-10px", display: "flex", flexDirection: "column", gap: "5px" }}>
 
           <ConsultButton onButtonClick={() =>
-            handleConsultClick(<GetAuthorsInLibrary />)} />
+          
+            handleConsultClick(<GetAuthorsInLibrary selectedLibrary={props.selectedLibrary} /> )} />
 
           <RegisterButton onButtonClick={() =>
             handleConsultClick(<InputFormAuthor />)} />
@@ -79,10 +86,10 @@ const MenuOptions: React.FC = () => {
         <div style={{ marginTop: "-10px", display: "flex", flexDirection: "column", gap: "5px" }}>
 
           <ConsultButton onButtonClick={() =>
-            handleConsultClick(<GetBooksInLibrary />)} />
+            handleConsultClick(<GetBooksInLibrary selectedLibrary={props.selectedLibrary} />)} />
 
           <RegisterButton onButtonClick={() =>
-            handleConsultClick(<InputFormBook />)} />
+            handleConsultClick(<InputFormBook selectedLibrary={props.selectedLibrary}/>)} />
 
           <UpdateButton />
         </div>

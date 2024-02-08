@@ -24,9 +24,28 @@ function InputFormLibrary() {
 
   const [selectedCidade, setSelectedCidade] = useState<string>("");
 
+  const [libraryData, setLibraryData] = useState({
+    nome: "",
+    rua: "",
+    numero: "",
+    bairro: "",
+    cidade: "",
+    estado: ""
+
+  })
+
+  const entradaDeDados = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    setLibraryData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   useEffect(() => {
 
-    const buscarUfAPIIBGE = async () => {
+    const buscarUfApiIBGE = async () => {
       try {
 
         const response = await axios.get(
@@ -39,7 +58,7 @@ function InputFormLibrary() {
       }
     };
 
-    buscarUfAPIIBGE();
+    buscarUfApiIBGE();
   }, []);
 
   const mudancaDeEstado = async (event: SelectChangeEvent<string>) => {
@@ -52,9 +71,9 @@ function InputFormLibrary() {
       const response = await axios.get(
         `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`);
 
-        const cidadesDoEstado: Municipio[] = response.data.map(
-          (cidade: { nome: string }) => (
-            { nome: cidade.nome }));
+      const cidadesDoEstado: Municipio[] = response.data.map(
+        (cidade: { nome: string }) => (
+          { nome: cidade.nome }));
 
       setCidades(cidadesDoEstado);
 
@@ -73,9 +92,44 @@ function InputFormLibrary() {
 
   };
 
+  const enviarDados = async (eventForm: React.FormEvent) => {
+
+    eventForm.preventDefault();
+
+    try {
+
+      const dataToSend = {
+        ...libraryData,
+
+        estado: selectedUF,
+
+        cidade: selectedCidade
+      };
+
+      const response = await axios.post('http://localhost:8080/InsertLibrary', dataToSend);
+
+      alert('Biblioteca cadastrada com sucesso!');
+
+      setLibraryData({
+        nome: "",
+        rua: "",
+        numero: "",
+        bairro: "",
+        cidade: "",
+        estado: ""
+
+      })
+    } catch (error) {
+      console.error('Erro ao cadastrar Biblioteca', error);
+    }
+  }
+
+
+
   return (
 
-    <form>
+    <form onSubmit={enviarDados} id="libraryForm">
+
       <Paper elevation={3} style={{
         padding: '20px',
         margin: '20px 0',
@@ -90,27 +144,36 @@ function InputFormLibrary() {
             <legend>Cadastrar Biblioteca</legend>
 
             <TextField
-              id="nome" label="Nome"
+              id="nome" name="nome" label="Nome"
               variant="outlined"
               fullWidth margin="normal"
-              InputProps={{ style: { height: '50px' } }}
-              style={{ height: '34px' }} />
+              value={libraryData.nome}
+              onChange={entradaDeDados}
+            />
 
             <TextField
-              id="rua/avenida" label="Rua/Avenida"
+              id="rua" name="rua" label="Rua/Avenida"
               variant="outlined"
               fullWidth margin="normal"
-              InputProps={{ style: { height: '50px' } }}
-              style={{ height: '34px' }} />
+              value={libraryData.rua}
+              onChange={entradaDeDados}
+            />
 
             <TextField
-              id="numero" label="Número"
+              id="numero" name="numero" label="Número"
               variant="outlined"
               fullWidth margin="normal"
-              InputProps={{ style: { height: '50px' } }}
-              style={{ height: '34px' }} />
+              value={libraryData.numero}
+              onChange={entradaDeDados}
+            />
 
-
+            <TextField
+              id="bairro" name="bairro" label="Bairro"
+              variant="outlined"
+              fullWidth margin="normal"
+              value={libraryData.bairro}
+              onChange={entradaDeDados}
+            />
 
             <FormControl fullWidth margin="normal" style={{ height: '40px' }}>
               <InputLabel id="select-uf-label">UF:</InputLabel>
