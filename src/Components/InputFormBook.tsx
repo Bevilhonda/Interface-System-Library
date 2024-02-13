@@ -1,13 +1,15 @@
 import { Box, Button, FormGroup, InputLabel, MenuItem, Paper, Select, TextField } from "@mui/material";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import React, { useState } from "react";
 import { LibraryEntity } from '../Components/LibraryDropDown';
 import GetAllAlthors, { AuthorEntity } from '../Components/GetAllAuthors';
 
 
+
 const InputFormBook = function (props: { selectedLibrary: LibraryEntity | null }) {
 
   const [authorsList, setAuthorsList] = useState<AuthorEntity[] | null>(null);
+  
 
   const handleAuthorsReceived = (authors: AuthorEntity[] | null) => {
     setAuthorsList(authors);
@@ -37,6 +39,7 @@ const InputFormBook = function (props: { selectedLibrary: LibraryEntity | null }
       const response = await axios.post('http://localhost:8080/InsertBook', bookData);
 
       alert('Livro cadastrado com sucesso!');
+      
 
       setBookData({
         titulo: " ",
@@ -47,9 +50,32 @@ const InputFormBook = function (props: { selectedLibrary: LibraryEntity | null }
       });
 
     } catch (error) {
-      console.error('Erro ao cadastrar livro:', error);
+      if (axios.isAxiosError(error)) {
 
-      alert('Erro ao cadastrar livro. Verifique o console para mais detalhes.');
+        const axiosError: AxiosError = error;
+
+        if (axiosError.response?.status === 400) {
+
+          const errorMessage: string[] = (error.response?.data as string[]) || [];
+
+          alert(errorMessage.join("\n"));
+          //join() é um método de array em JavaScript que une todos os elementos 
+          //de um array em uma única string.
+
+        } else {
+
+          console.error("Erro ao cadastrar Livro:", axiosError);
+
+          alert("Erro ao cadastrar Livro. Tente novamente mais tarde.");
+        }
+
+      } else {
+
+        console.error("Erro ao cadastrar Livro:", error);
+
+        alert("Erro ao cadastrar Livro. Tente novamente mais tarde.");
+
+      }
     }
   };
 
@@ -111,7 +137,7 @@ const InputFormBook = function (props: { selectedLibrary: LibraryEntity | null }
               {authorsList && authorsList.map((author) => (
 
                 <MenuItem key={author.id} value={author.id}>
-                  {`${author.name.name} ${author.name.lastName} ${author.id}`}
+                  {`${author.name.name} ${author.name.lastName}`}
                 </MenuItem>
 
               ))}

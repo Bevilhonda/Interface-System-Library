@@ -4,7 +4,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 interface Estado {
   sigla: string;
@@ -120,9 +120,34 @@ function InputFormLibrary() {
 
       })
     } catch (error) {
-      console.error('Erro ao cadastrar Biblioteca', error);
+      if (axios.isAxiosError(error)) {
+
+        const axiosError: AxiosError = error;
+
+        if (axiosError.response?.status === 400) {
+
+          const errorMessage: string[] = (error.response?.data as string[]) || [];
+
+          alert(errorMessage.join("\n"));
+          //join() é um método de array em JavaScript que une todos os elementos 
+          //de um array em uma única string.
+
+        } else {
+
+          console.error("Erro ao cadastrar Biblioteca:", axiosError);
+
+          alert("Erro ao cadastrar Biblioteca. Tente novamente mais tarde.");
+        }
+
+      } else {
+
+        console.error("Erro ao cadastrar Biblioteca:", error);
+
+        alert("Erro ao cadastrar Biblioteca. Tente novamente mais tarde.");
+
+      }
     }
-  }
+  };
 
 
 

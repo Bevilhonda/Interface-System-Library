@@ -1,19 +1,11 @@
 import { Box, Button, FormGroup, Paper, TextField } from "@mui/material";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import React, { useState } from "react";
 
-type Message ={
-  messageList:string;
-}
-
-type ListMessage = {
-  listMessage : Message[];
-
-}
 
 const InputFormAuthor = function () {
 
-  const[messageAlert,setMessaALert] = useState<ListMessage | null> (null) ;
+
 
   const [authorData, setAuthorData] = useState({
     nome: '',
@@ -24,8 +16,8 @@ const InputFormAuthor = function () {
   const entradaDeDados = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
-    setAuthorData((prevData) => ({
-      ...prevData,
+    setAuthorData((estadoAnterior) => ({
+      ...estadoAnterior,
       [name]: value,
 
     }));
@@ -39,23 +31,47 @@ const InputFormAuthor = function () {
     try {
       const response = await axios.post('http://localhost:8080/InsertAuthor', authorData);
 
-      setMessaALert(response.data);
-      
-  
-        alert('Autor cadastrado com sucesso!');
-      
+
+      alert('Autor cadastrado com sucesso!');
+
       setAuthorData({
         nome: '',
         sobrenome: '',
         data_nascimento: '',
       });
-     
+
     } catch (error) {
-      console.error('Erro ao cadastrar autor:',error);
+      if (axios.isAxiosError(error)) {
 
+        const axiosError: AxiosError = error;
 
-      alert(messageAlert);
+        if (axiosError.response?.status === 400) {
+          // verifica se existe o stattus da resposta e se é 400
 
+          const errorMessage: string[] = (error.response?.data as string[]) || [];
+          /*Aqui estamos acessando a mensagem de erro retornada pela API, que está na 
+          propriedade data do objeto response. Como data pode ser undefined, estamos 
+          usando o operador de acesso seguro (?.) para evitar erros caso response seja 
+          undefined. Estamos também fazendo uma conversão para garantir que data seja
+           uma array de strings. Caso não seja, inicializamos errorMessage como uma 
+           array vazia.*/
+
+          alert(errorMessage.join("\n"));
+
+        } else {
+
+          console.error("Erro ao cadastrar autor:", axiosError);
+
+          alert("Erro ao cadastrar autor. Tente novamente mais tarde.");
+        }
+
+      } else {
+
+        console.error("Erro ao cadastrar autor:", error);
+
+        alert("Erro ao cadastrar autor. Tente novamente mais tarde.");
+
+      }
     }
   };
 
@@ -74,7 +90,7 @@ const InputFormAuthor = function () {
         <Box mb={2}>
           <FormGroup>
             <legend>Cadastrar Autor</legend>
-            
+
             <TextField
               id="nome" name="nome" label="Nome"
               variant="outlined"

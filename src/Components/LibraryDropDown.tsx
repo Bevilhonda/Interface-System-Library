@@ -76,7 +76,7 @@ const LibraryDropDown = function (props: {
             {libraries && libraries.map((library) => (
 
               <MenuItem key={library.id_biblioteca} value={library.id_biblioteca}>
-                {`${library.nome} ${library.id_biblioteca} `}
+                {`${library.nome} `}
                 
               </MenuItem>
 
