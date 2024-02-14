@@ -164,43 +164,49 @@ function InputFormLibrary() {
         color: 'blue'
       }}>
         <Box mb={2}>
-          <FormGroup>
+          <FormGroup >
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
 
-            <legend>Cadastrar Biblioteca</legend>
+              <legend>Cadastrar Biblioteca</legend>
 
-            <TextField
-              id="nome" name="nome" label="Nome"
-              variant="outlined"
-              fullWidth margin="normal"
-              value={libraryData.nome}
-              onChange={entradaDeDados}
-            />
+              <TextField
+                id="nome" name="nome" label="Nome"
+                variant="outlined"
+                fullWidth margin="normal"
+                style={{ marginBottom: '-5px' }}
+                value={libraryData.nome}
+                onChange={entradaDeDados}
+              />
 
-            <TextField
-              id="rua" name="rua" label="Rua/Avenida"
-              variant="outlined"
-              fullWidth margin="normal"
-              value={libraryData.rua}
-              onChange={entradaDeDados}
-            />
+              <TextField
+                id="rua" name="rua" label="Rua/Avenida"
+                variant="outlined"
+                fullWidth margin="normal"
+                style={{ marginBottom: '-5px' }}
+                value={libraryData.rua}
+                onChange={entradaDeDados}
+              />
 
-            <TextField
-              id="numero" name="numero" label="Número"
-              variant="outlined"
-              fullWidth margin="normal"
-              value={libraryData.numero}
-              onChange={entradaDeDados}
-            />
+              <TextField
+                id="numero" name="numero" label="Número"
+                variant="outlined"
+                fullWidth margin="normal"
+                style={{ marginBottom: '-5px' }}
+                value={libraryData.numero}
+                onChange={entradaDeDados}
+              />
 
-            <TextField
-              id="bairro" name="bairro" label="Bairro"
-              variant="outlined"
-              fullWidth margin="normal"
-              value={libraryData.bairro}
-              onChange={entradaDeDados}
-            />
+              <TextField
+                id="bairro" name="bairro" label="Bairro"
+                variant="outlined"
+                fullWidth margin="normal"
+                style={{ marginBottom: '-5px' }}
+                value={libraryData.bairro}
+                onChange={entradaDeDados}
+              />
+            </div>
 
-            <FormControl fullWidth margin="normal" style={{ height: '40px' }}>
+            <FormControl fullWidth margin="normal" style={{ height: '45px' }}>
               <InputLabel id="select-uf-label">UF:</InputLabel>
               <Select
                 id="select-uf"
