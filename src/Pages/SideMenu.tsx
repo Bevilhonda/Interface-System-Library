@@ -1,7 +1,5 @@
 import Paper from '@mui/material/Paper';
 import MenuOptions from '../Menu/MenuOptions';
-import { Link } from 'react-router-dom';
-import HomeIcon from '@mui/icons-material/Home';
 import {LibraryEntity} from '../Components/LibraryDropDown'
 
 function SideMenu(props: { selectedLibrary: LibraryEntity | null }) {
@@ -9,16 +7,6 @@ function SideMenu(props: { selectedLibrary: LibraryEntity | null }) {
 
   return (
     <div>
-      <div style={{ marginTop: '-100px', textAlign: 'left' }}>
-
-        <Link to="/">
-
-          <HomeIcon style={{ fontSize: 40, color: 'black' }} />
-
-        </Link>
-
-      </div>
-
       <div>
 
 
