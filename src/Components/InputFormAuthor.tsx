@@ -5,8 +5,6 @@ import React, { useState } from "react";
 
 const InputFormAuthor = function () {
 
-
-
   const [authorData, setAuthorData] = useState({
     nome: '',
     sobrenome: '',
