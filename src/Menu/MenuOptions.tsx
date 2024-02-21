@@ -10,6 +10,8 @@ import InputFormBook from "../Components/InputFormBook";
 import InputFormAuthor from "../Components/InputFormAuthor";
 import InputFormLibrary from "../Components/InputFormLibrary";
 import {LibraryEntity} from '../Components/LibraryDropDown';
+import InputUpdateAuthor from "../Components/InputUpdateAuthor";
+import InputUpdateLibrary from "../Components/InputUpdateLibrary";
 
 interface MenuOptionsProps {
   selectedLibrary: LibraryEntity | null;
@@ -45,7 +47,8 @@ const MenuOptions: React.FC<MenuOptionsProps> = (props: { selectedLibrary: Libra
           <RegisterButton onButtonClick={() => 
             handleConsultClick(<InputFormLibrary />)} />
 
-          <UpdateButton />
+          <UpdateButton onButtonClick={()=>
+          handleConsultClick(<InputUpdateLibrary selectedLibrary={props.selectedLibrary}/>)}/>
         </div>
 
       </Box>
@@ -69,7 +72,7 @@ const MenuOptions: React.FC<MenuOptionsProps> = (props: { selectedLibrary: Libra
           <RegisterButton onButtonClick={() =>
             handleConsultClick(<InputFormAuthor />)} />
 
-          <UpdateButton />
+          <UpdateButton onButtonClick={()=> handleConsultClick(<InputUpdateAuthor />)}/>
         </div>
 
       </Box>
