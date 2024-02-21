@@ -4,25 +4,25 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Title from './Components/Title';
 
 function App() {
-  
+
 
   return (
+    
+        <Router>
+          <div className="App">
 
-    <Router>
-      <div className="App">
-       
-        <Title />
-        
-        <Routes>
-          
-          <Route element={<HomePage />} path="/" />
-          
-          
-          
-        </Routes>
+            <Title />
 
-      </div>
-    </Router>
+            <Routes>
+
+              <Route element={<HomePage />} path="/" />
+
+
+
+            </Routes>
+
+          </div>
+        </Router>
   );
 }
 
