@@ -13,7 +13,7 @@ type ListAuthorResponse = {
 };
 
 
-const GetAuthorsInLibrary = function (props: { selectedLibrary: LibraryEntity | null }) {
+const GetAuthorsInLibrary = function (props: { selectedLibrary: LibraryEntity | null  }) {
 
 
   const idLibrary = props.selectedLibrary?.id_biblioteca ;
