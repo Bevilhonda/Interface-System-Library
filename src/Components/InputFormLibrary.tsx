@@ -129,8 +129,8 @@ function InputFormLibrary() {
           const errorMessage: string[] = (error.response?.data as string[]) || [];
 
           alert(errorMessage.join("\n"));
-          //join() é um método de array em JavaScript que une todos os elementos 
-          //de um array em uma única string.
+          /*join() é um método de array em JavaScript que une todos os elementos 
+          de um array em uma única string. */
 
         } else {
 
